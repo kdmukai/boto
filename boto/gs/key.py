@@ -502,20 +502,20 @@ class Key(S3Key):
             # TODO: At some point consider removing this seek/tell/seek
             # logic, after enough time has passed that it's unlikely any
             # programs remain that assume the older auto-rewind interface.
-            if not isinstance(fp, KeyFile):
-                spos = fp.tell()
-                fp.seek(0, os.SEEK_END)
-                if fp.tell() == spos:
-                    fp.seek(0, os.SEEK_SET)
-                    if fp.tell() != spos:
-                        # Raise an exception as this is likely a programming
-                        # error whereby there is data before the fp but nothing
-                        # after it.
-                        fp.seek(spos)
-                        raise AttributeError('fp is at EOF. Use rewind option '
-                                             'or seek() to data start.')
-                # seek back to the correct position.
-                fp.seek(spos)
+            # if not isinstance(fp, KeyFile):
+            #     spos = fp.tell()
+            #     fp.seek(0, os.SEEK_END)
+            #     if fp.tell() == spos:
+            #         fp.seek(0, os.SEEK_SET)
+            #         if fp.tell() != spos:
+            #             # Raise an exception as this is likely a programming
+            #             # error whereby there is data before the fp but nothing
+            #             # after it.
+            #             fp.seek(spos)
+            #             raise AttributeError('fp is at EOF. Use rewind option '
+            #                                  'or seek() to data start.')
+            #     # seek back to the correct position.
+            #     fp.seek(spos)
 
         if hasattr(fp, 'name'):
             self.path = fp.name
