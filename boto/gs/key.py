@@ -487,7 +487,7 @@ class Key(S3Key):
         if rewind:
             # caller requests reading from beginning of fp.
             fp.seek(0, os.SEEK_SET)
-        else:
+        # else:
             # The following seek/tell/seek logic is intended
             # to detect applications using the older interface to
             # set_contents_from_file(), which automatically rewound the
